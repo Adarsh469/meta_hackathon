@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --red: #ff2d55;
+  --orange: #ff6b00;
+  --yellow: #ffd60a;
+  --green: #30d158;
+  --gray: #636366;
+  --blue: #0a84ff;
+  --purple: #bf5af2;
+  --bg: #080c14;
+  --surface: rgba(255, 255, 255, 0.04);
+  --border: rgba(255, 255, 255, 0.08);
+  --glow-blue: 0 0 40px rgba(10, 132, 255, 0.25);
+}
+
+/* ── scrollbar ─────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+}
+
+/* ── glass card ────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px) saturate(1.5);
+  -webkit-backdrop-filter: blur(12px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+}
+
+/* ── glow button ───────────────────────────── */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btn-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(10, 132, 255, 0.40);
+}
+
+.btn-glow:active {
+  transform: translateY(0);
+}
+
+/* ── gradient text ─────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #0a84ff 0%, #bf5af2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── ESI badge pulse ───────────────────────── */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  70% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+.esi-pulse::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: currentColor;
+  animation: pulse-ring 1.5s ease-out infinite;
+}
+
+/* ── animate in ────────────────────────────── */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.45s ease both;
+}
+
+/* ── queue drag hover ──────────────────────── */
+.queue-item {
+  transition: background 0.15s, transform 0.15s;
+}
+
+.queue-item:hover {
+  background: rgba(10, 132, 255, 0.08);
+  transform: translateX(4px);
+}
+
+.queue-item.dragging {
+  opacity: 0.6;
+  transform: scale(0.97);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.queue-item.drag-over {
+  border-color: var(--blue) !important;
+}
+
+/* ── chat bubble ───────────────────────────── */
+.chat-bubble-user {
+  background: rgba(10, 132, 255, 0.18);
+  border-radius: 16px 16px 4px 16px;
+}
+
+.chat-bubble-doc {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 16px 16px 16px 4px;
+}
+
+/* ── log line ──────────────────────────────── */
+.log-line {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.log-start {
+  color: #0a84ff;
+}
+
+.log-step {
+  color: #30d158;
+}
+
+.log-step-fail {
+  color: #ff6b00;
+}
+
+.log-end {
+  color: #bf5af2;
+}
+
+.log-debug {
+  color: #636366;
+}
+
+/* ── hero dot grid ─────────────────────────── */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ── section divider ───────────────────────── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}

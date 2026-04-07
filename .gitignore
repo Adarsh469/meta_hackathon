@@ -1,21 +1,46 @@
-# Python
+# ── Python ─────────────────────────────────────────────────────────────────
 __pycache__/
 *.py[cod]
 *$py.class
 env/
 venv/
 .env
+.env.local
 
-# Dataset (Usually too large for GitHub)
+# ── Dataset (too large for GitHub) ─────────────────────────────────────────
 dataset/
 *.jsonl
 *.csv
 
-# OS specific
+# ── Frontend — Node / Next.js ───────────────────────────────────────────────
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/.pnp
+frontend/.pnp.*
+frontend/.yarn/*
+!frontend/.yarn/patches
+!frontend/.yarn/plugins
+!frontend/.yarn/releases
+!frontend/.yarn/versions
+frontend/coverage/
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
+frontend/.vercel
+frontend/.env*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ── OS / editor ─────────────────────────────────────────────────────────────
 .DS_Store
 .idea/
 .vscode/
+*.pem
 
-# OpenEnv local artifacts
+# ── OpenEnv local artifacts ──────────────────────────────────────────────────
 *.log
 .openenv/
+.server.pid

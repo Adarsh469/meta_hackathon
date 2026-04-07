@@ -11,14 +11,18 @@ Compatible with Hugging Face Spaces on port 7860.
 """
 
 import os
+from pathlib import Path
 from typing import Any, Dict, Optional
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from env import ClinicalTriageEnv, TriageAction, ResetResult, StepResult
+
+FRONTEND_DIR = Path(__file__).parent / "frontend"
 
 app = FastAPI(
     title="ClinicalTriage-Env API",
@@ -182,6 +186,23 @@ def list_tasks() -> Dict[str, Any]:
 
 
 # ---------------------------------------------------------------------------
+# Frontend static files  (must come AFTER all API routes)
+# ---------------------------------------------------------------------------
+
+@app.get("/", include_in_schema=False)
+def serve_index():
+    """Serve the frontend dashboard."""
+    index = FRONTEND_DIR / "index.html"
+    if index.exists():
+        return FileResponse(str(index))
+    return JSONResponse({"status": "ok", "message": "ClinicalTriage-Env API — frontend not found"})
+
+# Mount static assets (CSS, JS, images) under /static
+if FRONTEND_DIR.exists():
+    app.mount("/static", StaticFiles(directory=str(FRONTEND_DIR)), name="static")
+
+
+# ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
 
@@ -189,3 +210,4 @@ if __name__ == "__main__":
     import uvicorn
     port = int(os.getenv("PORT", "7860"))
     uvicorn.run("server:app", host="0.0.0.0", port=port, reload=False)
+
