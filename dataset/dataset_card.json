@@ -1,0 +1,23 @@
+{
+  "dataset_name": "Medical Synthetic Triage Dataset (500 Cases)",
+  "creator": "saileshmeena32",
+  "size": 500,
+  "is_synthetic": true,
+
+  "tags": [
+    "medical",
+    "healthcare",
+    "synthetic-data",
+    "triage",
+    "risk-classification",
+    "ai-dataset",
+    "llm-training",
+    "jsonl",
+    "csv"
+  ],
+
+  "language": ["en"],
+  "task_categories": ["classification"],
+  "license": "cc-by-nc-4.0"
+}
+

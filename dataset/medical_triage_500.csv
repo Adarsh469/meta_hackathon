@@ -1,0 +1,501 @@
+case_id,age,gender,symptoms
+MTG-00001,66,male,blurred vision; chest pain
+MTG-00002,12,female,diarrhea; dizziness; rash
+MTG-00003,4,male,blurred vision; fever
+MTG-00004,3,female,abdominal pain; headache; joint pain; vomiting
+MTG-00005,56,male,dizziness; headache; rash; shortness of breath
+MTG-00006,43,male,blurred vision; rash; shortness of breath
+MTG-00007,47,male,headache; rash
+MTG-00008,20,female,abdominal pain; diarrhea; shortness of breath
+MTG-00009,46,male,blurred vision; chest pain
+MTG-00010,61,male,abdominal pain; fever
+MTG-00011,8,male,diarrhea; fever; headache; rash
+MTG-00012,55,female,abdominal pain; blurred vision; joint pain; vomiting
+MTG-00013,9,female,blurred vision; fever; headache; vomiting
+MTG-00014,69,female,fever; joint pain; shortness of breath
+MTG-00015,31,female,diarrhea; joint pain
+MTG-00016,26,female,chest pain; headache; joint pain; rash
+MTG-00017,33,female,abdominal pain; chest pain; shortness of breath; vomiting
+MTG-00018,76,female,blurred vision; headache; vomiting
+MTG-00019,23,male,chest pain; fever
+MTG-00020,35,male,headache; shortness of breath
+MTG-00021,86,female,chest pain; diarrhea; vomiting
+MTG-00022,43,male,abdominal pain; blurred vision; diarrhea; joint pain
+MTG-00023,47,male,blurred vision; shortness of breath
+MTG-00024,9,female,chest pain; diarrhea; shortness of breath
+MTG-00025,33,male,abdominal pain; fever; rash; vomiting
+MTG-00026,53,female,diarrhea; headache; shortness of breath; vomiting
+MTG-00027,73,male,abdominal pain; chest pain
+MTG-00028,27,female,blurred vision; headache; rash; shortness of breath
+MTG-00029,28,female,abdominal pain; dizziness; fever; rash
+MTG-00030,35,male,abdominal pain; diarrhea; joint pain
+MTG-00031,22,male,diarrhea; joint pain
+MTG-00032,52,female,diarrhea; fever; shortness of breath; vomiting
+MTG-00033,8,female,abdominal pain; fever; vomiting
+MTG-00034,56,male,abdominal pain; blurred vision; dizziness; vomiting
+MTG-00035,20,female,diarrhea; dizziness; fever
+MTG-00036,28,female,blurred vision; joint pain; rash; vomiting
+MTG-00037,35,male,fever; joint pain
+MTG-00038,11,male,abdominal pain; blurred vision; diarrhea
+MTG-00039,41,male,blurred vision; fever; headache; shortness of breath
+MTG-00040,75,female,blurred vision; dizziness; fever
+MTG-00041,79,female,chest pain; diarrhea; joint pain; shortness of breath
+MTG-00042,74,female,dizziness; headache
+MTG-00043,67,male,blurred vision; diarrhea; vomiting
+MTG-00044,45,female,chest pain; dizziness; shortness of breath
+MTG-00045,8,female,abdominal pain; dizziness; fever; joint pain
+MTG-00046,30,male,abdominal pain; blurred vision; rash; shortness of breath
+MTG-00047,68,female,blurred vision; chest pain; dizziness; vomiting
+MTG-00048,31,female,fever; rash; vomiting
+MTG-00049,7,male,blurred vision; shortness of breath
+MTG-00050,40,female,joint pain; rash
+MTG-00051,70,male,abdominal pain; blurred vision; diarrhea
+MTG-00052,27,male,headache; shortness of breath
+MTG-00053,57,male,blurred vision; chest pain; fever; shortness of breath
+MTG-00054,1,female,headache; rash
+MTG-00055,26,male,diarrhea; headache; rash
+MTG-00056,19,male,abdominal pain; blurred vision; headache; rash
+MTG-00057,41,male,dizziness; joint pain
+MTG-00058,33,male,blurred vision; headache; joint pain
+MTG-00059,78,female,blurred vision; shortness of breath
+MTG-00060,1,female,joint pain; vomiting
+MTG-00061,90,male,blurred vision; chest pain; diarrhea; shortness of breath
+MTG-00062,29,female,chest pain; fever; rash
+MTG-00063,28,female,abdominal pain; shortness of breath; vomiting
+MTG-00064,21,male,blurred vision; chest pain
+MTG-00065,12,male,abdominal pain; shortness of breath; vomiting
+MTG-00066,51,female,abdominal pain; chest pain; fever
+MTG-00067,31,male,blurred vision; joint pain; shortness of breath
+MTG-00068,90,male,dizziness; fever; rash; vomiting
+MTG-00069,11,male,diarrhea; joint pain; rash; shortness of breath
+MTG-00070,9,female,diarrhea; fever
+MTG-00071,34,male,blurred vision; chest pain; fever
+MTG-00072,37,female,blurred vision; vomiting
+MTG-00073,85,male,chest pain; fever; shortness of breath
+MTG-00074,6,male,abdominal pain; chest pain; rash
+MTG-00075,33,female,diarrhea; dizziness; headache; rash
+MTG-00076,41,male,blurred vision; diarrhea; joint pain; vomiting
+MTG-00077,37,male,blurred vision; diarrhea; dizziness; headache
+MTG-00078,26,male,chest pain; diarrhea; vomiting
+MTG-00079,83,male,diarrhea; dizziness; shortness of breath
+MTG-00080,8,male,joint pain; shortness of breath
+MTG-00081,73,male,fever; rash
+MTG-00082,18,male,chest pain; dizziness; fever; joint pain
+MTG-00083,63,male,chest pain; joint pain; rash; shortness of breath
+MTG-00084,85,female,abdominal pain; blurred vision; diarrhea; joint pain
+MTG-00085,85,female,abdominal pain; diarrhea; dizziness; vomiting
+MTG-00086,63,female,blurred vision; vomiting
+MTG-00087,82,female,fever; headache; joint pain
+MTG-00088,81,female,abdominal pain; chest pain; diarrhea; vomiting
+MTG-00089,61,male,blurred vision; joint pain
+MTG-00090,18,female,chest pain; fever; rash
+MTG-00091,56,female,fever; shortness of breath
+MTG-00092,46,male,dizziness; joint pain; vomiting
+MTG-00093,69,male,abdominal pain; headache; shortness of breath; vomiting
+MTG-00094,49,male,diarrhea; headache; vomiting
+MTG-00095,28,male,dizziness; headache
+MTG-00096,2,female,blurred vision; dizziness; headache; shortness of breath
+MTG-00097,67,female,diarrhea; shortness of breath; vomiting
+MTG-00098,25,male,chest pain; diarrhea; dizziness; vomiting
+MTG-00099,30,female,blurred vision; shortness of breath
+MTG-00100,65,female,abdominal pain; blurred vision; fever; vomiting
+MTG-00101,15,male,dizziness; fever
+MTG-00102,27,female,blurred vision; headache; joint pain
+MTG-00103,74,female,blurred vision; fever; rash
+MTG-00104,53,female,dizziness; joint pain; rash
+MTG-00105,55,male,fever; rash
+MTG-00106,61,female,blurred vision; dizziness; fever; joint pain
+MTG-00107,2,male,dizziness; fever; joint pain
+MTG-00108,15,female,fever; shortness of breath
+MTG-00109,8,female,diarrhea; fever; vomiting
+MTG-00110,45,female,blurred vision; chest pain; dizziness
+MTG-00111,49,male,abdominal pain; chest pain; fever; joint pain
+MTG-00112,78,female,blurred vision; rash
+MTG-00113,76,female,abdominal pain; dizziness; fever; vomiting
+MTG-00114,72,male,headache; shortness of breath
+MTG-00115,85,male,abdominal pain; fever; rash; vomiting
+MTG-00116,19,female,headache; joint pain; shortness of breath
+MTG-00117,3,female,diarrhea; vomiting
+MTG-00118,48,male,diarrhea; headache; joint pain
+MTG-00119,80,female,blurred vision; chest pain; fever
+MTG-00120,75,male,chest pain; diarrhea; fever
+MTG-00121,38,female,headache; rash
+MTG-00122,70,male,blurred vision; rash
+MTG-00123,80,female,diarrhea; headache; shortness of breath
+MTG-00124,69,male,headache; rash; vomiting
+MTG-00125,76,male,joint pain; vomiting
+MTG-00126,12,female,blurred vision; vomiting
+MTG-00127,42,male,dizziness; joint pain; vomiting
+MTG-00128,80,female,dizziness; vomiting
+MTG-00129,87,female,diarrhea; headache; vomiting
+MTG-00130,16,female,fever; headache; vomiting
+MTG-00131,33,female,chest pain; fever; rash
+MTG-00132,66,female,chest pain; fever
+MTG-00133,34,female,dizziness; fever
+MTG-00134,6,male,abdominal pain; blurred vision; diarrhea; vomiting
+MTG-00135,68,male,fever; shortness of breath; vomiting
+MTG-00136,81,male,abdominal pain; joint pain
+MTG-00137,41,female,chest pain; joint pain; rash; shortness of breath
+MTG-00138,50,male,abdominal pain; fever; vomiting
+MTG-00139,52,male,abdominal pain; headache; rash
+MTG-00140,76,female,abdominal pain; blurred vision; chest pain; diarrhea
+MTG-00141,4,male,chest pain; diarrhea; vomiting
+MTG-00142,48,male,abdominal pain; fever; vomiting
+MTG-00143,59,male,blurred vision; diarrhea; fever; shortness of breath
+MTG-00144,67,male,chest pain; rash; shortness of breath
+MTG-00145,44,male,headache; joint pain; rash
+MTG-00146,87,male,headache; vomiting
+MTG-00147,41,female,diarrhea; fever; rash; vomiting
+MTG-00148,38,female,diarrhea; dizziness; headache; joint pain
+MTG-00149,67,male,chest pain; rash; shortness of breath; vomiting
+MTG-00150,59,female,blurred vision; dizziness; headache; vomiting
+MTG-00151,10,female,abdominal pain; diarrhea; headache; rash
+MTG-00152,76,male,headache; rash
+MTG-00153,29,female,chest pain; fever; rash; shortness of breath
+MTG-00154,43,female,dizziness; fever; vomiting
+MTG-00155,73,male,chest pain; fever; joint pain; shortness of breath
+MTG-00156,79,male,blurred vision; dizziness; headache; rash
+MTG-00157,55,female,chest pain; dizziness; headache; rash
+MTG-00158,70,male,abdominal pain; chest pain; fever
+MTG-00159,35,male,chest pain; rash; shortness of breath; vomiting
+MTG-00160,53,female,headache; joint pain; vomiting
+MTG-00161,41,male,chest pain; fever; headache; shortness of breath
+MTG-00162,13,male,abdominal pain; chest pain; headache; rash
+MTG-00163,50,female,blurred vision; chest pain; joint pain; shortness of breath
+MTG-00164,71,male,chest pain; diarrhea
+MTG-00165,16,female,chest pain; dizziness
+MTG-00166,23,female,abdominal pain; fever; joint pain; vomiting
+MTG-00167,58,female,blurred vision; dizziness; headache; shortness of breath
+MTG-00168,37,male,joint pain; shortness of breath; vomiting
+MTG-00169,48,female,blurred vision; fever; joint pain
+MTG-00170,44,male,chest pain; joint pain
+MTG-00171,21,female,diarrhea; rash; shortness of breath
+MTG-00172,16,male,headache; shortness of breath
+MTG-00173,44,female,abdominal pain; chest pain; dizziness; fever
+MTG-00174,59,female,blurred vision; chest pain; headache
+MTG-00175,20,female,dizziness; fever; vomiting
+MTG-00176,67,male,blurred vision; shortness of breath
+MTG-00177,9,male,chest pain; diarrhea; dizziness; rash
+MTG-00178,56,male,chest pain; dizziness; headache; shortness of breath
+MTG-00179,51,male,abdominal pain; chest pain; fever; vomiting
+MTG-00180,30,female,abdominal pain; blurred vision; diarrhea; headache
+MTG-00181,86,female,blurred vision; diarrhea; joint pain
+MTG-00182,48,female,abdominal pain; chest pain; headache; vomiting
+MTG-00183,52,male,fever; headache; rash
+MTG-00184,13,female,dizziness; headache
+MTG-00185,16,male,dizziness; rash; shortness of breath
+MTG-00186,50,male,blurred vision; diarrhea; rash; shortness of breath
+MTG-00187,26,male,blurred vision; fever; joint pain; rash
+MTG-00188,48,male,blurred vision; headache
+MTG-00189,19,female,blurred vision; diarrhea; joint pain
+MTG-00190,27,female,abdominal pain; blurred vision; rash; shortness of breath
+MTG-00191,9,female,blurred vision; joint pain
+MTG-00192,70,male,fever; shortness of breath; vomiting
+MTG-00193,49,female,diarrhea; headache
+MTG-00194,70,female,abdominal pain; blurred vision; diarrhea; headache
+MTG-00195,73,female,fever; joint pain; rash; vomiting
+MTG-00196,1,female,abdominal pain; chest pain; shortness of breath
+MTG-00197,26,female,diarrhea; dizziness; vomiting
+MTG-00198,63,female,dizziness; headache
+MTG-00199,26,female,abdominal pain; diarrhea; fever; shortness of breath
+MTG-00200,21,female,fever; shortness of breath
+MTG-00201,28,female,blurred vision; chest pain; diarrhea; shortness of breath
+MTG-00202,88,male,blurred vision; joint pain; rash; shortness of breath
+MTG-00203,64,male,abdominal pain; blurred vision; diarrhea; fever
+MTG-00204,61,male,blurred vision; dizziness; joint pain; rash
+MTG-00205,76,female,abdominal pain; blurred vision; diarrhea
+MTG-00206,71,female,chest pain; diarrhea; dizziness; fever
+MTG-00207,28,male,blurred vision; chest pain; diarrhea; fever
+MTG-00208,41,male,chest pain; fever; rash; vomiting
+MTG-00209,48,male,dizziness; fever; rash; vomiting
+MTG-00210,61,male,abdominal pain; fever; headache; shortness of breath
+MTG-00211,20,female,blurred vision; shortness of breath
+MTG-00212,86,female,diarrhea; headache; rash
+MTG-00213,13,female,chest pain; shortness of breath
+MTG-00214,37,male,dizziness; headache
+MTG-00215,36,male,chest pain; headache
+MTG-00216,7,female,diarrhea; shortness of breath
+MTG-00217,11,male,headache; shortness of breath
+MTG-00218,83,female,abdominal pain; headache; joint pain; rash
+MTG-00219,47,male,blurred vision; rash; shortness of breath
+MTG-00220,13,male,fever; shortness of breath; vomiting
+MTG-00221,47,female,blurred vision; diarrhea; shortness of breath; vomiting
+MTG-00222,35,male,abdominal pain; blurred vision; fever; shortness of breath
+MTG-00223,35,female,chest pain; headache; shortness of breath
+MTG-00224,26,male,dizziness; joint pain; shortness of breath; vomiting
+MTG-00225,43,female,fever; joint pain; shortness of breath; vomiting
+MTG-00226,62,male,abdominal pain; headache; joint pain; shortness of breath
+MTG-00227,29,male,abdominal pain; diarrhea; fever; joint pain
+MTG-00228,82,male,shortness of breath; vomiting
+MTG-00229,68,female,fever; joint pain
+MTG-00230,42,female,joint pain; rash; shortness of breath; vomiting
+MTG-00231,90,male,abdominal pain; blurred vision; headache
+MTG-00232,43,female,abdominal pain; diarrhea
+MTG-00233,17,female,blurred vision; headache
+MTG-00234,5,female,abdominal pain; blurred vision; headache
+MTG-00235,87,male,dizziness; fever; headache
+MTG-00236,56,male,dizziness; fever; headache; rash
+MTG-00237,26,male,diarrhea; headache; joint pain; rash
+MTG-00238,35,female,abdominal pain; chest pain
+MTG-00239,85,male,abdominal pain; headache; rash; vomiting
+MTG-00240,66,female,dizziness; rash
+MTG-00241,83,male,abdominal pain; diarrhea; dizziness; vomiting
+MTG-00242,46,male,chest pain; headache; joint pain; vomiting
+MTG-00243,67,female,diarrhea; joint pain; rash
+MTG-00244,48,female,chest pain; joint pain; shortness of breath
+MTG-00245,10,male,blurred vision; chest pain; vomiting
+MTG-00246,35,male,diarrhea; headache; joint pain
+MTG-00247,11,female,diarrhea; headache; rash
+MTG-00248,88,male,diarrhea; joint pain
+MTG-00249,13,male,diarrhea; shortness of breath
+MTG-00250,44,male,blurred vision; dizziness
+MTG-00251,68,female,blurred vision; rash; shortness of breath
+MTG-00252,9,male,chest pain; fever; shortness of breath
+MTG-00253,88,male,chest pain; joint pain
+MTG-00254,64,female,chest pain; dizziness; vomiting
+MTG-00255,4,female,chest pain; joint pain; shortness of breath
+MTG-00256,1,male,abdominal pain; blurred vision; rash
+MTG-00257,81,male,dizziness; rash
+MTG-00258,18,female,dizziness; shortness of breath
+MTG-00259,56,female,blurred vision; fever; headache; rash
+MTG-00260,16,female,abdominal pain; fever; joint pain; vomiting
+MTG-00261,38,female,chest pain; headache
+MTG-00262,55,male,blurred vision; chest pain; shortness of breath
+MTG-00263,29,female,chest pain; headache
+MTG-00264,22,male,chest pain; fever; shortness of breath
+MTG-00265,1,male,blurred vision; dizziness; vomiting
+MTG-00266,59,male,blurred vision; vomiting
+MTG-00267,60,female,joint pain; vomiting
+MTG-00268,23,female,abdominal pain; rash
+MTG-00269,24,female,abdominal pain; diarrhea; dizziness; vomiting
+MTG-00270,46,male,fever; headache
+MTG-00271,47,male,abdominal pain; vomiting
+MTG-00272,9,male,blurred vision; chest pain; fever; shortness of breath
+MTG-00273,2,male,dizziness; headache
+MTG-00274,40,male,abdominal pain; blurred vision; joint pain
+MTG-00275,10,female,shortness of breath; vomiting
+MTG-00276,38,female,blurred vision; rash
+MTG-00277,22,male,dizziness; headache; vomiting
+MTG-00278,8,male,joint pain; rash; shortness of breath
+MTG-00279,61,male,blurred vision; shortness of breath; vomiting
+MTG-00280,59,male,blurred vision; headache; shortness of breath
+MTG-00281,10,male,abdominal pain; joint pain; vomiting
+MTG-00282,28,male,diarrhea; headache; shortness of breath
+MTG-00283,42,female,chest pain; dizziness
+MTG-00284,21,female,chest pain; joint pain
+MTG-00285,75,male,abdominal pain; diarrhea; rash
+MTG-00286,4,male,dizziness; joint pain; vomiting
+MTG-00287,12,female,diarrhea; headache
+MTG-00288,3,female,chest pain; shortness of breath
+MTG-00289,60,female,chest pain; diarrhea; dizziness; shortness of breath
+MTG-00290,12,male,chest pain; fever; headache; vomiting
+MTG-00291,55,male,dizziness; fever; shortness of breath
+MTG-00292,44,male,fever; rash
+MTG-00293,11,male,diarrhea; dizziness; joint pain
+MTG-00294,81,male,dizziness; joint pain
+MTG-00295,40,male,fever; headache; rash
+MTG-00296,54,female,chest pain; rash; shortness of breath; vomiting
+MTG-00297,12,female,fever; rash
+MTG-00298,33,male,chest pain; diarrhea; shortness of breath; vomiting
+MTG-00299,89,female,abdominal pain; blurred vision; joint pain; shortness of breath
+MTG-00300,80,male,diarrhea; dizziness; joint pain
+MTG-00301,76,female,abdominal pain; joint pain; rash; vomiting
+MTG-00302,73,female,abdominal pain; headache; rash; vomiting
+MTG-00303,54,male,fever; vomiting
+MTG-00304,72,male,diarrhea; joint pain
+MTG-00305,32,female,diarrhea; rash; shortness of breath
+MTG-00306,55,female,fever; vomiting
+MTG-00307,13,female,diarrhea; fever; rash; vomiting
+MTG-00308,54,female,dizziness; joint pain; rash; vomiting
+MTG-00309,38,male,blurred vision; dizziness; headache; joint pain
+MTG-00310,48,male,blurred vision; dizziness; joint pain; vomiting
+MTG-00311,67,female,abdominal pain; diarrhea; dizziness; fever
+MTG-00312,38,male,diarrhea; dizziness; shortness of breath; vomiting
+MTG-00313,66,male,chest pain; diarrhea; shortness of breath; vomiting
+MTG-00314,18,male,diarrhea; fever
+MTG-00315,60,female,abdominal pain; blurred vision; dizziness; vomiting
+MTG-00316,10,female,blurred vision; diarrhea; fever; joint pain
+MTG-00317,83,female,abdominal pain; blurred vision; fever
+MTG-00318,81,male,abdominal pain; dizziness
+MTG-00319,37,female,chest pain; headache
+MTG-00320,34,female,abdominal pain; joint pain; shortness of breath; vomiting
+MTG-00321,63,male,chest pain; fever; shortness of breath
+MTG-00322,74,female,abdominal pain; blurred vision; chest pain
+MTG-00323,24,male,dizziness; joint pain; rash; shortness of breath
+MTG-00324,84,female,abdominal pain; diarrhea; dizziness; fever
+MTG-00325,71,male,joint pain; rash; vomiting
+MTG-00326,42,male,fever; headache
+MTG-00327,31,male,diarrhea; dizziness; headache; rash
+MTG-00328,87,female,abdominal pain; fever; rash
+MTG-00329,32,female,abdominal pain; joint pain
+MTG-00330,23,male,fever; joint pain
+MTG-00331,71,female,diarrhea; dizziness; fever; headache
+MTG-00332,70,female,headache; rash
+MTG-00333,66,female,diarrhea; fever; headache; vomiting
+MTG-00334,52,female,abdominal pain; headache; rash
+MTG-00335,81,female,fever; headache
+MTG-00336,23,male,diarrhea; fever; rash; shortness of breath
+MTG-00337,73,female,abdominal pain; dizziness
+MTG-00338,5,male,chest pain; dizziness
+MTG-00339,2,female,chest pain; headache; shortness of breath
+MTG-00340,47,male,abdominal pain; chest pain; vomiting
+MTG-00341,58,male,chest pain; rash; shortness of breath
+MTG-00342,85,male,abdominal pain; diarrhea; dizziness; fever
+MTG-00343,62,female,blurred vision; shortness of breath
+MTG-00344,1,female,abdominal pain; vomiting
+MTG-00345,24,male,abdominal pain; blurred vision; rash; shortness of breath
+MTG-00346,84,male,dizziness; headache; rash; shortness of breath
+MTG-00347,62,female,diarrhea; headache; joint pain; vomiting
+MTG-00348,73,female,abdominal pain; blurred vision; dizziness; rash
+MTG-00349,3,male,abdominal pain; chest pain; fever; headache
+MTG-00350,3,female,chest pain; diarrhea; joint pain; rash
+MTG-00351,28,male,abdominal pain; fever
+MTG-00352,48,female,abdominal pain; blurred vision; dizziness; rash
+MTG-00353,84,male,blurred vision; chest pain; diarrhea; dizziness
+MTG-00354,3,male,dizziness; headache; vomiting
+MTG-00355,83,male,chest pain; joint pain; shortness of breath
+MTG-00356,2,male,blurred vision; dizziness; rash; vomiting
+MTG-00357,42,female,chest pain; headache; shortness of breath; vomiting
+MTG-00358,12,female,chest pain; fever
+MTG-00359,59,male,abdominal pain; chest pain; diarrhea; rash
+MTG-00360,42,female,fever; headache
+MTG-00361,5,male,diarrhea; headache
+MTG-00362,76,female,dizziness; headache; joint pain; vomiting
+MTG-00363,32,male,diarrhea; headache; vomiting
+MTG-00364,88,male,blurred vision; shortness of breath; vomiting
+MTG-00365,2,female,chest pain; headache; rash
+MTG-00366,31,male,abdominal pain; dizziness; headache; vomiting
+MTG-00367,80,male,joint pain; rash; vomiting
+MTG-00368,88,male,diarrhea; dizziness; fever; headache
+MTG-00369,54,male,blurred vision; headache
+MTG-00370,5,male,chest pain; diarrhea; fever; shortness of breath
+MTG-00371,31,male,fever; joint pain; rash
+MTG-00372,13,female,blurred vision; dizziness; headache; vomiting
+MTG-00373,78,male,abdominal pain; dizziness; shortness of breath; vomiting
+MTG-00374,12,male,rash; shortness of breath
+MTG-00375,45,female,abdominal pain; blurred vision; chest pain; joint pain
+MTG-00376,80,female,abdominal pain; blurred vision; chest pain; rash
+MTG-00377,7,female,fever; rash; shortness of breath; vomiting
+MTG-00378,86,female,abdominal pain; dizziness; headache; vomiting
+MTG-00379,7,female,blurred vision; chest pain; fever; shortness of breath
+MTG-00380,6,female,abdominal pain; blurred vision; headache
+MTG-00381,63,female,blurred vision; chest pain; diarrhea
+MTG-00382,2,male,headache; shortness of breath
+MTG-00383,28,female,blurred vision; joint pain
+MTG-00384,17,male,blurred vision; chest pain; dizziness; shortness of breath
+MTG-00385,33,male,blurred vision; shortness of breath
+MTG-00386,63,female,chest pain; joint pain; rash
+MTG-00387,77,female,diarrhea; shortness of breath; vomiting
+MTG-00388,55,female,joint pain; vomiting
+MTG-00389,50,female,joint pain; rash
+MTG-00390,34,female,joint pain; rash; shortness of breath
+MTG-00391,49,male,chest pain; diarrhea; shortness of breath
+MTG-00392,80,male,joint pain; rash
+MTG-00393,89,female,diarrhea; dizziness; fever; vomiting
+MTG-00394,17,female,blurred vision; diarrhea; dizziness; joint pain
+MTG-00395,44,female,dizziness; fever
+MTG-00396,32,female,diarrhea; fever; vomiting
+MTG-00397,79,female,blurred vision; diarrhea
+MTG-00398,87,male,abdominal pain; blurred vision; shortness of breath
+MTG-00399,4,female,abdominal pain; fever; headache; joint pain
+MTG-00400,27,female,blurred vision; chest pain; rash; shortness of breath
+MTG-00401,35,male,chest pain; joint pain
+MTG-00402,77,male,chest pain; headache
+MTG-00403,39,male,abdominal pain; diarrhea; headache; joint pain
+MTG-00404,31,female,blurred vision; diarrhea; dizziness; fever
+MTG-00405,19,male,chest pain; diarrhea; dizziness; joint pain
+MTG-00406,55,female,abdominal pain; diarrhea; headache; rash
+MTG-00407,15,female,blurred vision; diarrhea; fever; vomiting
+MTG-00408,58,male,chest pain; shortness of breath
+MTG-00409,29,male,blurred vision; chest pain; diarrhea; fever
+MTG-00410,48,female,dizziness; headache; shortness of breath; vomiting
+MTG-00411,59,female,blurred vision; headache
+MTG-00412,3,female,abdominal pain; diarrhea
+MTG-00413,18,male,chest pain; joint pain
+MTG-00414,3,female,blurred vision; headache
+MTG-00415,28,male,chest pain; fever; shortness of breath
+MTG-00416,38,male,diarrhea; fever; headache; joint pain
+MTG-00417,90,female,abdominal pain; diarrhea; dizziness; fever
+MTG-00418,26,female,chest pain; joint pain
+MTG-00419,28,male,abdominal pain; dizziness; shortness of breath
+MTG-00420,80,female,chest pain; diarrhea
+MTG-00421,56,female,diarrhea; shortness of breath
+MTG-00422,53,male,diarrhea; fever; joint pain; vomiting
+MTG-00423,86,female,blurred vision; fever; vomiting
+MTG-00424,20,female,abdominal pain; blurred vision; diarrhea; vomiting
+MTG-00425,60,female,chest pain; diarrhea
+MTG-00426,26,female,dizziness; rash
+MTG-00427,47,female,abdominal pain; blurred vision; diarrhea; headache
+MTG-00428,89,female,blurred vision; dizziness; headache; joint pain
+MTG-00429,31,female,dizziness; headache; rash; vomiting
+MTG-00430,72,male,abdominal pain; headache; shortness of breath; vomiting
+MTG-00431,25,male,blurred vision; chest pain; dizziness
+MTG-00432,35,female,fever; joint pain; rash; vomiting
+MTG-00433,29,female,diarrhea; dizziness; joint pain
+MTG-00434,64,male,abdominal pain; chest pain
+MTG-00435,25,female,rash; vomiting
+MTG-00436,89,male,diarrhea; dizziness
+MTG-00437,38,female,chest pain; fever
+MTG-00438,6,female,abdominal pain; headache
+MTG-00439,33,male,chest pain; fever
+MTG-00440,76,female,chest pain; fever; rash
+MTG-00441,8,female,chest pain; dizziness; headache
+MTG-00442,22,female,blurred vision; rash
+MTG-00443,59,female,abdominal pain; fever; headache; joint pain
+MTG-00444,29,male,headache; shortness of breath
+MTG-00445,26,male,abdominal pain; headache; rash
+MTG-00446,7,female,blurred vision; headache
+MTG-00447,28,male,blurred vision; headache; rash; vomiting
+MTG-00448,16,male,headache; joint pain; rash; shortness of breath
+MTG-00449,79,male,diarrhea; dizziness; headache; vomiting
+MTG-00450,9,male,abdominal pain; headache; rash
+MTG-00451,86,female,diarrhea; dizziness; fever; vomiting
+MTG-00452,51,male,blurred vision; chest pain; headache; vomiting
+MTG-00453,60,male,diarrhea; shortness of breath
+MTG-00454,39,male,abdominal pain; blurred vision; vomiting
+MTG-00455,43,male,abdominal pain; chest pain
+MTG-00456,57,male,abdominal pain; shortness of breath
+MTG-00457,25,male,blurred vision; chest pain; joint pain
+MTG-00458,19,female,blurred vision; fever; headache; vomiting
+MTG-00459,37,female,chest pain; headache; joint pain
+MTG-00460,74,male,abdominal pain; dizziness; joint pain; rash
+MTG-00461,50,female,blurred vision; fever; headache
+MTG-00462,80,female,diarrhea; dizziness; joint pain
+MTG-00463,73,female,blurred vision; dizziness; rash; vomiting
+MTG-00464,42,male,blurred vision; diarrhea; headache
+MTG-00465,61,male,chest pain; joint pain
+MTG-00466,54,male,abdominal pain; fever; joint pain; rash
+MTG-00467,62,female,chest pain; vomiting
+MTG-00468,11,male,chest pain; joint pain; shortness of breath
+MTG-00469,87,female,blurred vision; headache; shortness of breath
+MTG-00470,33,male,blurred vision; dizziness; joint pain; rash
+MTG-00471,27,female,diarrhea; rash; shortness of breath; vomiting
+MTG-00472,17,female,abdominal pain; diarrhea; fever; vomiting
+MTG-00473,47,male,fever; rash; vomiting
+MTG-00474,74,female,joint pain; vomiting
+MTG-00475,43,female,abdominal pain; diarrhea; fever
+MTG-00476,29,male,chest pain; headache; joint pain
+MTG-00477,27,male,abdominal pain; chest pain
+MTG-00478,12,male,abdominal pain; fever; vomiting
+MTG-00479,34,male,diarrhea; fever; joint pain; rash
+MTG-00480,9,male,blurred vision; chest pain; dizziness
+MTG-00481,71,male,diarrhea; headache; rash
+MTG-00482,18,male,diarrhea; joint pain; shortness of breath
+MTG-00483,63,female,chest pain; rash
+MTG-00484,1,male,abdominal pain; dizziness; shortness of breath
+MTG-00485,88,male,abdominal pain; blurred vision; chest pain
+MTG-00486,62,female,blurred vision; diarrhea; fever; shortness of breath
+MTG-00487,36,male,abdominal pain; joint pain
+MTG-00488,77,male,abdominal pain; headache; rash
+MTG-00489,41,male,chest pain; fever; joint pain; vomiting
+MTG-00490,67,female,abdominal pain; diarrhea; shortness of breath
+MTG-00491,88,male,fever; headache; shortness of breath; vomiting
+MTG-00492,6,female,abdominal pain; blurred vision; vomiting
+MTG-00493,19,male,blurred vision; diarrhea; dizziness; headache
+MTG-00494,60,female,blurred vision; diarrhea; headache; joint pain
+MTG-00495,81,male,blurred vision; chest pain; shortness of breath
+MTG-00496,47,female,diarrhea; dizziness
+MTG-00497,20,male,abdominal pain; dizziness
+MTG-00498,20,female,blurred vision; fever; joint pain; shortness of breath
+MTG-00499,59,female,blurred vision; diarrhea; headache
+MTG-00500,56,female,abdominal pain; blurred vision; dizziness; rash
