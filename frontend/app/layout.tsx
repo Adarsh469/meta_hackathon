@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { MedicalBackground } from "@/components/MedicalBackground";
 import "./globals.css";
 
 const inter = Inter({
@@ -10,8 +11,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "ClinicalTriage-Env | Emergency Department Triage Simulator",
   description:
-    "An OpenEnv AI-powered Emergency Department triage simulator. Assign ESI levels, prioritize patient queues, and uncover hidden medical histories.",
-  keywords: ["triage", "medical AI", "ESI", "emergency department", "OpenEnv"],
+    "An AI-powered Emergency Department triage simulator. Assign ESI levels, prioritize patient queues, and uncover hidden medical histories.",
+  keywords: ["triage", "medical AI", "ESI", "emergency department"],
 };
 
 export default function RootLayout({
@@ -21,7 +22,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="bg-[#080c14] text-white antialiased">{children}</body>
+      <body className="bg-[#f5f8fa] text-slate-900 antialiased">
+        <MedicalBackground />
+        {children}
+      </body>
     </html>
   );
 }

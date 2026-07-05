@@ -83,14 +83,3 @@ export const ESI_LABELS: Record<number, { label: string; color: string; bg: stri
     4: { label: "Less Urgent", color: "#30d158", bg: "rgba(48,209,88,0.15)", description: "Stable, one resource" },
     5: { label: "Non-Urgent", color: "#636366", bg: "rgba(99,99,102,0.15)", description: "Routine, no resources" },
 };
-
-// ─── Step log ─────────────────────────────────────────────────────────────
-
-export interface StepLog {
-    step: number;
-    action: string;
-    reward: number;
-    done: boolean;
-    message: string;
-    timestamp: number;
-}

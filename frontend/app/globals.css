@@ -11,10 +11,13 @@
   --gray: #636366;
   --blue: #0a84ff;
   --purple: #bf5af2;
-  --bg: #080c14;
-  --surface: rgba(255, 255, 255, 0.04);
-  --border: rgba(255, 255, 255, 0.08);
-  --glow-blue: 0 0 40px rgba(10, 132, 255, 0.25);
+
+  --bg: #f5f8fa;
+  --surface: #ffffff;
+  --ink: #10182b;
+  --ink-muted: #5b6472;
+  --line: #e2e8ef;
+  --glow-blue: 0 8px 24px rgba(3, 105, 161, 0.22);
 }
 
 /* ── scrollbar ─────────────────────────────── */
@@ -28,17 +31,16 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(16, 24, 43, 0.14);
   border-radius: 3px;
 }
 
-/* ── glass card ────────────────────────────── */
+/* ── card ──────────────────────────────────── */
 .glass {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px) saturate(1.5);
-  -webkit-backdrop-filter: blur(12px) saturate(1.5);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(16, 24, 43, 0.03), 0 6px 20px rgba(16, 24, 43, 0.04);
 }
 
 /* ── glow button ───────────────────────────── */
@@ -50,7 +52,7 @@
 
 .btn-glow:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(10, 132, 255, 0.40);
+  box-shadow: var(--glow-blue);
 }
 
 .btn-glow:active {
@@ -115,66 +117,23 @@
 }
 
 .queue-item:hover {
-  background: rgba(10, 132, 255, 0.08);
+  background: rgba(10, 132, 255, 0.05);
   transform: translateX(4px);
-}
-
-.queue-item.dragging {
-  opacity: 0.6;
-  transform: scale(0.97);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-}
-
-.queue-item.drag-over {
-  border-color: var(--blue) !important;
 }
 
 /* ── chat bubble ───────────────────────────── */
 .chat-bubble-user {
-  background: rgba(10, 132, 255, 0.18);
+  background: rgba(10, 132, 255, 0.12);
   border-radius: 16px 16px 4px 16px;
 }
 
 .chat-bubble-doc {
-  background: rgba(255, 255, 255, 0.06);
+  background: #eef1f4;
   border-radius: 16px 16px 16px 4px;
-}
-
-/* ── log line ──────────────────────────────── */
-.log-line {
-  font-family: 'Courier New', monospace;
-  font-size: 12px;
-  line-height: 1.7;
-}
-
-.log-start {
-  color: #0a84ff;
-}
-
-.log-step {
-  color: #30d158;
-}
-
-.log-step-fail {
-  color: #ff6b00;
-}
-
-.log-end {
-  color: #bf5af2;
-}
-
-.log-debug {
-  color: #636366;
-}
-
-/* ── hero dot grid ─────────────────────────── */
-.dot-grid {
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 28px 28px;
 }
 
 /* ── section divider ───────────────────────── */
 .divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
 }

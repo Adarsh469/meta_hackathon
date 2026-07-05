@@ -8,16 +8,16 @@ import {
     BrainCircuitIcon, UsersIcon,
 } from "lucide-react";
 import { triageApi } from "@/lib/api";
-import { TaskId, PatientSummary, TriageObservation, StepLog, QuestionTopic } from "@/lib/types";
+import { TaskId, PatientSummary, TriageObservation, QuestionTopic } from "@/lib/types";
 import { getPatientName } from "@/lib/names";
 import { PatientCard, ESIBadge } from "@/components/PatientCard";
 import { ESISelector } from "@/components/ESISelector";
 import { QueueReorder } from "@/components/QueueReorder";
 import { DoctorChat } from "@/components/DoctorChat";
-import { StepLogPanel } from "@/components/StepLog";
 import { ExplanationPanel, ExplainData } from "@/components/ExplanationPanel";
 import { AnimatedQueue } from "@/components/AnimatedQueue";
 import { AgentChat, ChatMessage } from "@/components/AgentChat";
+import { Logo } from "@/components/Logo";
 
 // ─── constants ────────────────────────────────────────────────────────────────
 
@@ -44,7 +44,6 @@ async function fetchLearnedHeuristics(): Promise<Record<string, { avg_esi: numbe
 
 async function runAIAgent(
     taskId: TaskId,
-    onLog: (log: StepLog) => void,
     onObsUpdate: (obs: TriageObservation) => void,
     onQueueSorted: (initial: PatientSummary[], final: PatientSummary[]) => void,
     onChatMessage: (msg: ChatMessage) => void,
@@ -62,12 +61,6 @@ async function runAIAgent(
 
     let totalReward = 0;
     let lastAssignedEsi: number | null = null; // track for feedback submission
-
-    onLog({
-        step: 0,
-        action: `[START] task=${taskId} env=clinical-triage-env model=AI+HumanLearning`,
-        reward: 0, done: false, message: "", timestamp: Date.now(),
-    });
 
     for (let step = 1; step <= 10; step++) {
         await new Promise((r) => setTimeout(r, 900));
@@ -134,20 +127,11 @@ async function runAIAgent(
                 onChatMessage({ from: "doctor", text: result.observation.message, timestamp: Date.now() });
             }
 
-            const actionStr =
-                action.action_type === "assign_esi" ? `assign_esi(esi_level=${action.esi_level})` :
-                    action.action_type === "reorder_queue" ? `reorder_queue([...sorted by urgency])` :
-                        `ask_question(topic=${action.question_topic})`;
-            onLog({ step, action: actionStr, reward: result.reward, done: result.done, message: result.observation.message, timestamp: Date.now() });
-
             if (result.done) break;
-        } catch (err: unknown) {
-            onLog({ step, action: "ERROR", reward: 0, done: false, message: String(err), timestamp: Date.now() });
+        } catch {
             break;
         }
     }
-
-    onLog({ step: 99, action: `[END] success=${totalReward >= 0.5} score=${totalReward.toFixed(3)}`, reward: totalReward, done: true, message: "", timestamp: Date.now() });
 
     // ── Submit feedback for learning (same as human mode) ──────────────────────
     try {
@@ -190,7 +174,6 @@ export default function DashboardPage() {
     const [humanQueueOrder, setHumanQueueOrder] = useState<string[]>([]);
 
     // AI agent state
-    const [logs, setLogs] = useState<StepLog[]>([]);
     const [agentRunning, setAgentRunning] = useState(false);
     const [agentChatMessages, setAgentChatMessages] = useState<ChatMessage[]>([]);
 
@@ -202,7 +185,6 @@ export default function DashboardPage() {
     const [error, setError] = useState<string | null>(null);
     const [stats, setStats] = useState<{ total: number; avg_reward: number | null }>({ total: 0, avg_reward: null });
 
-    const addLog = useCallback((log: StepLog) => setLogs((prev) => [...prev, log]), []);
     const addChatMsg = useCallback((msg: ChatMessage) => setAgentChatMessages((prev) => [...prev, msg]), []);
 
     useEffect(() => {
@@ -214,7 +196,6 @@ export default function DashboardPage() {
         setScore(null);
         setExplanation(null);
         setSelectedESI(null);
-        setLogs([]);
         setError(null);
         setAgentRunning(false);
         setAgentChatMessages([]);
@@ -321,7 +302,6 @@ export default function DashboardPage() {
         try {
             await runAIAgent(
                 taskId,
-                addLog,
                 (newObs) => setObs(newObs),
                 (initial, final) => {
                     setInitialQueueForAnim(initial);
@@ -350,13 +330,15 @@ export default function DashboardPage() {
         <div className="min-h-screen flex flex-col">
 
             {/* ── top bar ──────────────────────────────────────────────────── */}
-            <header className="sticky top-0 z-40 border-b border-white/6 bg-[#080c14]/90 backdrop-blur-xl">
+            <header className="sticky top-0 z-40 border-b border-slate-900/6 bg-white/90 backdrop-blur-xl">
                 <div className="mx-auto max-w-[1400px] flex items-center gap-4 px-6 h-14">
-                    <Link href="/" className="flex items-center gap-2 text-sm font-semibold mr-2">
-                        <ShieldPlusIcon className="w-4 h-4 text-[#0a84ff]" />
+                    <Logo />
+                    <Link href="/" className="hidden md:flex items-center gap-2 text-sm font-medium mr-2 text-slate-400 hover:text-slate-600 transition-colors">
+                        <ChevronRightIcon className="w-3 h-3" />
+                        <ShieldPlusIcon className="w-3.5 h-3.5" />
                         ClinicalTriage
-                        <ChevronRightIcon className="w-3 h-3 text-white/25" />
-                        <span className="text-white/40">Dashboard</span>
+                        <ChevronRightIcon className="w-3 h-3 text-slate-300" />
+                        <span className="text-slate-400">Dashboard</span>
                     </Link>
 
                     {/* task tabs */}
@@ -366,7 +348,7 @@ export default function DashboardPage() {
                                 key={t.id}
                                 onClick={() => { setTaskId(t.id); setObs(null); resetEpisodeState(); }}
                                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all
-                  ${taskId === t.id ? "bg-white/8 text-white border border-white/10" : "text-white/40 hover:text-white/70 hover:bg-white/4"}`}
+                  ${taskId === t.id ? "bg-slate-900/6 text-slate-900 border border-slate-900/10" : "text-slate-400 hover:text-slate-600 hover:bg-slate-900/4"}`}
                             >
                                 <span className="w-1.5 h-1.5 rounded-full" style={{ background: t.color }} />
                                 {t.label}
@@ -379,21 +361,21 @@ export default function DashboardPage() {
 
                     {/* learning stats */}
                     {stats.total > 0 && (
-                        <div className="hidden md:flex items-center gap-1.5 text-xs text-white/40 border border-white/8 rounded-full px-3 py-1.5">
+                        <div className="hidden md:flex items-center gap-1.5 text-xs text-slate-500 border border-slate-900/8 rounded-full px-3 py-1.5">
                             <UsersIcon className="w-3 h-3" />
                             {stats.total} decisions
-                            {stats.avg_reward !== null && <span className="text-[#30d158]">· {(stats.avg_reward * 100).toFixed(0)}% avg</span>}
+                            {stats.avg_reward !== null && <span className="text-[#1f9254]">· {(stats.avg_reward * 100).toFixed(0)}% avg</span>}
                         </div>
                     )}
 
                     {/* mode toggle */}
-                    <div className="flex items-center gap-1 bg-white/4 rounded-xl p-1 border border-white/6">
+                    <div className="flex items-center gap-1 bg-slate-900/4 rounded-xl p-1 border border-slate-900/6">
                         {(["human", "ai"] as const).map((m) => (
                             <button
                                 key={m}
                                 onClick={() => setMode(m)}
                                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all
-                  ${mode === m ? "bg-[#0a84ff] text-white shadow-md" : "text-white/40 hover:text-white/70"}`}
+                  ${mode === m ? "bg-[#0369a1] text-white shadow-md" : "text-slate-400 hover:text-slate-600"}`}
                             >
                                 {m === "human" ? <UserIcon className="w-3.5 h-3.5" /> : <BotIcon className="w-3.5 h-3.5" />}
                                 {m === "human" ? "Human Mode" : "AI Agent"}
@@ -409,25 +391,25 @@ export default function DashboardPage() {
                 {/* ─ start screen ─ */}
                 {!showActive && (
                     <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6 text-center">
-                        <div className="p-5 rounded-3xl" style={{ background: currentTask.color + "18", color: currentTask.color }}>
+                        <div className="p-5 rounded-3xl" style={{ background: currentTask.color + "14", color: currentTask.color }}>
                             <ShieldPlusIcon className="w-10 h-10" />
                         </div>
                         <div>
-                            <h2 className="text-2xl font-bold mb-2">{currentTask.label}</h2>
-                            <p className="text-white/40 text-sm max-w-md">
+                            <h2 className="text-2xl font-bold mb-2 text-slate-900">{currentTask.label}</h2>
+                            <p className="text-slate-500 text-sm max-w-md">
                                 {taskId === "task1_esi_assignment" && "Evaluate a patient presentation and assign the correct ESI level (1–5)."}
                                 {taskId === "task2_queue_priority" && "Five patients arrive at once. Drag to rank them from most to least urgent."}
                                 {taskId === "task3_ambiguous_triage" && "Hidden medical history. Ask the doctor up to 3 questions, then assign ESI."}
                             </p>
                         </div>
                         {stats.total > 0 && mode === "ai" && (
-                            <div className="flex items-center gap-2 text-xs px-4 py-2 rounded-full border border-[#bf5af2]/30 bg-[#bf5af2]/8 text-[#bf5af2]">
+                            <div className="flex items-center gap-2 text-xs px-4 py-2 rounded-full border border-[#bf5af2]/25 bg-[#bf5af2]/8 text-[#bf5af2]">
                                 <BrainCircuitIcon className="w-3.5 h-3.5" />
                                 AI learned from {stats.total} human decision{stats.total !== 1 ? "s" : ""}
                             </div>
                         )}
                         {error && (
-                            <div className="flex items-center gap-2 text-[#ff2d55] bg-[#ff2d55]/10 border border-[#ff2d55]/20 rounded-xl px-4 py-3 text-sm max-w-md">
+                            <div className="flex items-center gap-2 text-[#ff2d55] bg-[#ff2d55]/8 border border-[#ff2d55]/20 rounded-xl px-4 py-3 text-sm max-w-md">
                                 <AlertCircleIcon className="w-4 h-4 flex-shrink-0" />{error}
                             </div>
                         )}
@@ -453,8 +435,8 @@ export default function DashboardPage() {
                             {/* episode header */}
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-3">
-                                    <span className="text-sm text-white/40">{mode === "ai" ? "AI Agent" : "Your turn"}</span>
-                                    <span className="text-xs px-2.5 py-1 rounded-full font-medium" style={{ background: currentTask.color + "22", color: currentTask.color }}>
+                                    <span className="text-sm text-slate-500">{mode === "ai" ? "AI Agent" : "Your turn"}</span>
+                                    <span className="text-xs px-2.5 py-1 rounded-full font-medium" style={{ background: currentTask.color + "1a", color: currentTask.color }}>
                                         {currentTask.badge}
                                     </span>
                                     {agentRunning && (
@@ -470,7 +452,7 @@ export default function DashboardPage() {
                                 <button
                                     onClick={mode === "ai" ? handleRunAgent : handleReset}
                                     disabled={loading || agentRunning}
-                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs border border-white/8 text-white/40 hover:text-white hover:border-white/20 transition-all disabled:opacity-40"
+                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs border border-slate-900/8 text-slate-500 hover:text-slate-900 hover:border-slate-900/20 transition-all disabled:opacity-40"
                                 >
                                     <RefreshCwIcon className={`w-3.5 h-3.5 ${loading || agentRunning ? "animate-spin" : ""}`} />
                                     {mode === "ai" ? "Run Again" : "Restart"}
@@ -483,7 +465,7 @@ export default function DashboardPage() {
                             {/* Task 2: animated queue (AI) or draggable queue (human) */}
                             {(obs?.queue || initialQueueForAnim.length > 0) && taskId === "task2_queue_priority" && (
                                 <div className="glass p-5">
-                                    <h3 className="text-sm font-semibold mb-4 text-white/70">
+                                    <h3 className="text-sm font-semibold mb-4 text-slate-600">
                                         {mode === "ai" ? (isQueueAnimating ? "🤖 Agent sorting patients…" : "Queue (sorted by agent)") : "Patient Queue — most urgent first"}
                                     </h3>
                                     {mode === "ai" ? (
@@ -509,7 +491,7 @@ export default function DashboardPage() {
 
                             {/* clarification message — hide for task2 (backend sends raw Kendall Tau text with case IDs) */}
                             {obs?.message && (obs.step ?? 0) > 0 && mode === "human" && taskId !== "task2_queue_priority" && (
-                                <div className="glass p-4 text-sm text-white/60 border-l-2 border-[#0a84ff]/50 rounded-l-none animate-fade-up">
+                                <div className="glass p-4 text-sm text-slate-600 border-l-2 border-[#0369a1]/50 rounded-l-none animate-fade-up">
                                     {obs.message}
                                 </div>
                             )}
@@ -518,15 +500,15 @@ export default function DashboardPage() {
                             {episodeDone && score !== null && (
                                 <div
                                     className="glass p-6 animate-fade-up border"
-                                    style={{ borderColor: score >= 0.8 ? "#30d158" : score >= 0.4 ? "#ffd60a" : "#ff2d55" }}
+                                    style={{ borderColor: score >= 0.8 ? "#1f9254" : score >= 0.4 ? "#b45309" : "#ff2d55" }}
                                 >
                                     <div className="flex items-center gap-4 mb-2">
-                                        <TrophyIcon className="w-8 h-8" style={{ color: score >= 0.8 ? "#30d158" : score >= 0.4 ? "#ffd60a" : "#ff2d55" }} />
+                                        <TrophyIcon className="w-8 h-8" style={{ color: score >= 0.8 ? "#1f9254" : score >= 0.4 ? "#b45309" : "#ff2d55" }} />
                                         <div>
-                                            <div className="text-2xl font-bold" style={{ color: score >= 0.8 ? "#30d158" : score >= 0.4 ? "#ffd60a" : "#ff2d55" }}>
+                                            <div className="text-2xl font-bold" style={{ color: score >= 0.8 ? "#1f9254" : score >= 0.4 ? "#b45309" : "#ff2d55" }}>
                                                 Score: {(score * 100).toFixed(0)}%
                                             </div>
-                                            <div className="text-xs text-white/40 mt-0.5">
+                                            <div className="text-xs text-slate-500 mt-0.5">
                                                 {score === 1 ? "Perfect — exact match!" : score >= 0.4 ? "Partial credit" : "Incorrect — study the explanation below"}
                                             </div>
                                         </div>
@@ -534,11 +516,11 @@ export default function DashboardPage() {
 
                                     {/* human action timeline */}
                                     {mode === "human" && humanActions.length > 0 && (
-                                        <div className="mt-3 pt-3 border-t border-white/8">
-                                            <div className="text-xs text-white/40 mb-2">Your actions:</div>
+                                        <div className="mt-3 pt-3 border-t border-slate-900/8">
+                                            <div className="text-xs text-slate-400 mb-2">Your actions:</div>
                                             {humanActions.map((a, i) => (
-                                                <div key={i} className="text-xs text-white/60 flex items-start gap-2 mb-1">
-                                                    <span className="text-[#0a84ff] mt-0.5">→</span>{a}
+                                                <div key={i} className="text-xs text-slate-600 flex items-start gap-2 mb-1">
+                                                    <span className="text-[#0369a1] mt-0.5">→</span>{a}
                                                 </div>
                                             ))}
                                         </div>
@@ -547,7 +529,7 @@ export default function DashboardPage() {
                                     <button
                                         onClick={mode === "ai" ? handleRunAgent : handleReset}
                                         disabled={agentRunning}
-                                        className="btn-glow mt-4 flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium bg-[#0a84ff] disabled:opacity-40"
+                                        className="btn-glow mt-4 flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium text-white bg-[#0369a1] disabled:opacity-40"
                                     >
                                         <RefreshCwIcon className="w-4 h-4" />
                                         {mode === "ai" ? "Run Agent Again" : "Try Again"}
@@ -571,13 +553,13 @@ export default function DashboardPage() {
                                     (taskId === "task3_ambiguous_triage" &&
                                         (obs.awaiting_final_esi || (obs.clarification_budget ?? 3) === 0 || selectedESI !== null))) && (
                                     <div className="glass p-5">
-                                        <h3 className="text-sm font-semibold mb-4 text-white/70">Assign ESI Level</h3>
+                                        <h3 className="text-sm font-semibold mb-4 text-slate-600">Assign ESI Level</h3>
                                         {selectedESI && <div className="mb-4"><ESIBadge level={selectedESI} /></div>}
                                         <ESISelector selected={selectedESI} onSelect={setSelectedESI} disabled={episodeDone} />
                                         <button
                                             onClick={handleHumanSubmit}
                                             disabled={!selectedESI || loading}
-                                            className="btn-glow mt-4 w-full py-3 rounded-xl font-semibold text-sm bg-[#0a84ff] disabled:opacity-40 disabled:cursor-not-allowed"
+                                            className="btn-glow mt-4 w-full py-3 rounded-xl font-semibold text-sm text-white bg-[#0369a1] disabled:opacity-40 disabled:cursor-not-allowed"
                                         >
                                             {loading ? "Submitting…" : "Submit Triage Decision →"}
                                         </button>
@@ -589,7 +571,7 @@ export default function DashboardPage() {
                                 <button
                                     onClick={handleHumanSubmit}
                                     disabled={loading}
-                                    className="btn-glow w-full py-3.5 rounded-2xl font-semibold text-sm bg-[#ffd60a] text-black disabled:opacity-40"
+                                    className="btn-glow w-full py-3.5 rounded-2xl font-semibold text-sm bg-[#b45309] text-white disabled:opacity-40"
                                 >
                                     {loading ? "Submitting…" : "Submit Queue Order →"}
                                 </button>
@@ -599,11 +581,11 @@ export default function DashboardPage() {
                             {mode === "human" && !episodeDone && obs &&
                                 taskId === "task3_ambiguous_triage" && !obs.awaiting_final_esi &&
                                 (obs.clarification_budget ?? 3) > 0 && selectedESI === null && (
-                                    <div className="glass p-4 flex items-center justify-between text-sm text-white/40">
+                                    <div className="glass p-4 flex items-center justify-between text-sm text-slate-400">
                                         <span>Ask the doctor questions first, then assign ESI when ready.</span>
                                         <button
                                             onClick={() => setObs((prev) => prev ? { ...prev, awaiting_final_esi: true } : prev)}
-                                            className="text-[#0a84ff] hover:underline text-xs ml-4 flex-shrink-0"
+                                            className="text-[#0369a1] hover:underline text-xs ml-4 flex-shrink-0"
                                         >
                                             Skip to ESI →
                                         </button>
@@ -619,14 +601,11 @@ export default function DashboardPage() {
                                 <DoctorChat budget={obs.clarification_budget ?? 3} onAskQuestion={handleAskQuestion} disabled={episodeDone} />
                             )}
 
-                            {/* Step log */}
-                            <StepLogPanel logs={logs} taskId={taskId} />
-
                             {/* AI: run again */}
                             {mode === "ai" && !agentRunning && episodeDone && (
                                 <button
                                     onClick={handleRunAgent}
-                                    className="btn-glow flex items-center justify-center gap-2 py-3.5 rounded-2xl font-semibold text-sm bg-[#bf5af2]"
+                                    className="btn-glow flex items-center justify-center gap-2 py-3.5 rounded-2xl font-semibold text-sm text-white bg-[#bf5af2]"
                                 >
                                     <BotIcon className="w-4 h-4" />
                                     Run Agent Again
