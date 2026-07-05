@@ -95,3 +95,18 @@ Full docs: `/docs` (Swagger UI)
 - Improved Clinical Reasoning section UI
 - Removed AI Agent Log section
 - Added animated transitions to queue priority reordering
+
+Commands:-
+git clone https://github.com/Adarsh469/pulse.ai.git
+cd pulse.ai
+git checkout dashboard-redesign
+
+Terminal 1:-
+cd frontend
+npm install
+npm run dev
+
+
+Terminal 2:-
+pip install -r requirements.txt  
+python app.py
