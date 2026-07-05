@@ -87,3 +87,11 @@ cd frontend && npm run dev
 | GET | `/learned_heuristics` | View accumulated learning stats |
 
 Full docs: `/docs` (Swagger UI)
+
+## Recent Updates
+- Redesigned dashboard with a light-mode medical/doctor theme
+- Added Pulse AI logo (clickable, links to home) on all dashboard pages
+- Removed MetaHackathon/OpenEnv references
+- Improved Clinical Reasoning section UI
+- Removed AI Agent Log section
+- Added animated transitions to queue priority reordering
