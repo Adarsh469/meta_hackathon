@@ -1,0 +1,9 @@
+Changes:-
+
+Frontend:-
+(doctor UI/light mode typish/ few lines(plus/ambulance type in the background)
+remove metahackathon/openenv
+logo for pulse ai(should come on every dashboard and clickable and returns to home)
+better ui for clinical reasoning and remove ai agent log
+
+backend:-

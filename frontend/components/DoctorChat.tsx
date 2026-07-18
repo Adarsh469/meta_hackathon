@@ -69,21 +69,21 @@ export function DoctorChat({ budget, onAskQuestion, disabled }: Props) {
     return (
         <div className="glass flex flex-col h-full min-h-[420px]">
             {/* header */}
-            <div className="flex items-center gap-3 px-5 py-4 border-b border-white/6">
-                <div className="p-2 rounded-xl bg-[#bf5af2]/15 text-[#bf5af2]">
+            <div className="flex items-center gap-3 px-5 py-4 border-b border-slate-900/6">
+                <div className="p-2 rounded-xl bg-[#bf5af2]/12 text-[#bf5af2]">
                     <StethoscopeIcon className="w-4 h-4" />
                 </div>
                 <div className="flex-1">
-                    <div className="font-semibold text-sm">Doctor Consultation</div>
-                    <div className="text-xs text-white/35">
+                    <div className="font-semibold text-sm text-slate-900">Doctor Consultation</div>
+                    <div className="text-xs text-slate-400">
                         {budget > 0 ? `${budget} question${budget !== 1 ? "s" : ""} remaining` : "No more questions"}
                     </div>
                 </div>
                 <div
                     className="text-xs px-2.5 py-1 rounded-full font-medium"
                     style={{
-                        background: budget > 0 ? "rgba(48,209,88,0.15)" : "rgba(255,45,85,0.15)",
-                        color: budget > 0 ? "#30d158" : "#ff2d55",
+                        background: budget > 0 ? "rgba(31,146,84,0.12)" : "rgba(255,45,85,0.12)",
+                        color: budget > 0 ? "#1f9254" : "#ff2d55",
                     }}
                 >
                     {budget}/{3}
@@ -98,7 +98,7 @@ export function DoctorChat({ budget, onAskQuestion, disabled }: Props) {
                         className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"} animate-fade-up`}
                     >
                         <div
-                            className={`max-w-[80%] px-4 py-3 text-sm leading-relaxed ${msg.role === "user" ? "chat-bubble-user text-[#0a84ff]" : "chat-bubble-doc text-white/80"
+                            className={`max-w-[80%] px-4 py-3 text-sm leading-relaxed ${msg.role === "user" ? "chat-bubble-user text-[#0369a1]" : "chat-bubble-doc text-slate-700"
                                 }`}
                         >
                             {msg.text}
@@ -112,7 +112,7 @@ export function DoctorChat({ budget, onAskQuestion, disabled }: Props) {
                                 {[0, 1, 2].map((i) => (
                                     <span
                                         key={i}
-                                        className="w-1.5 h-1.5 rounded-full bg-white/40 animate-bounce"
+                                        className="w-1.5 h-1.5 rounded-full bg-slate-400/60 animate-bounce"
                                         style={{ animationDelay: `${i * 0.15}s` }}
                                     />
                                 ))}
@@ -124,8 +124,8 @@ export function DoctorChat({ budget, onAskQuestion, disabled }: Props) {
             </div>
 
             {/* topic buttons */}
-            <div className="px-4 py-4 border-t border-white/6">
-                <div className="text-xs text-white/30 mb-2.5">Ask about:</div>
+            <div className="px-4 py-4 border-t border-slate-900/6">
+                <div className="text-xs text-slate-400 mb-2.5">Ask about:</div>
                 <div className="grid grid-cols-2 gap-2">
                     {TOPICS.map(({ key, label, emoji }) => {
                         const used = usedTopics.has(key);
@@ -137,14 +137,14 @@ export function DoctorChat({ budget, onAskQuestion, disabled }: Props) {
                                 disabled={inactive}
                                 className={`flex items-center gap-2 px-3 py-2.5 rounded-xl text-xs font-medium border transition-all
                   ${inactive
-                                        ? "opacity-35 cursor-not-allowed border-white/5 bg-transparent text-white/40"
-                                        : "border-[#bf5af2]/30 bg-[#bf5af2]/8 text-[#bf5af2] hover:bg-[#bf5af2]/15 hover:scale-[1.02] active:scale-95"
+                                        ? "opacity-50 cursor-not-allowed border-slate-900/6 bg-transparent text-slate-400"
+                                        : "border-[#bf5af2]/25 bg-[#bf5af2]/8 text-[#bf5af2] hover:bg-[#bf5af2]/15 hover:scale-[1.02] active:scale-95"
                                     }
                 `}
                             >
                                 <span>{emoji}</span>
                                 {label}
-                                {used && <span className="ml-auto text-white/25">✓</span>}
+                                {used && <span className="ml-auto text-slate-300">✓</span>}
                             </button>
                         );
                     })}

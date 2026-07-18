@@ -23,9 +23,9 @@ export function ESISelector({ onSelect, selected, disabled }: Props) {
               ${disabled ? "opacity-40 cursor-not-allowed" : "cursor-pointer hover:scale-105 active:scale-95"}
             `}
                         style={{
-                            background: isSelected ? meta.bg : "rgba(255,255,255,0.03)",
-                            borderColor: isSelected ? meta.color + "88" : "rgba(255,255,255,0.07)",
-                            boxShadow: isSelected ? `0 0 20px ${meta.color}30` : "none",
+                            background: isSelected ? meta.bg : "rgba(16,24,43,0.02)",
+                            borderColor: isSelected ? meta.color + "88" : "rgba(16,24,43,0.08)",
+                            boxShadow: isSelected ? `0 0 20px ${meta.color}25` : "none",
                         }}
                     >
                         {/* pulse ring when selected + critical */}
@@ -39,8 +39,8 @@ export function ESISelector({ onSelect, selected, disabled }: Props) {
                         <div
                             className="w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold relative z-10"
                             style={{
-                                background: isSelected ? meta.color + "30" : "rgba(255,255,255,0.05)",
-                                color: isSelected ? meta.color : "rgba(255,255,255,0.4)",
+                                background: isSelected ? meta.color + "30" : "rgba(16,24,43,0.05)",
+                                color: isSelected ? meta.color : "rgba(16,24,43,0.4)",
                                 border: `2px solid ${isSelected ? meta.color : "transparent"}`,
                             }}
                         >
@@ -49,11 +49,11 @@ export function ESISelector({ onSelect, selected, disabled }: Props) {
                         <div className="text-center relative z-10">
                             <div
                                 className="text-xs font-semibold leading-tight"
-                                style={{ color: isSelected ? meta.color : "rgba(255,255,255,0.5)" }}
+                                style={{ color: isSelected ? meta.color : "rgba(16,24,43,0.5)" }}
                             >
                                 {meta.label}
                             </div>
-                            <div className="text-[10px] text-white/25 mt-0.5 leading-tight hidden md:block">
+                            <div className="text-[10px] text-slate-400 mt-0.5 leading-tight hidden md:block">
                                 {meta.description}
                             </div>
                         </div>

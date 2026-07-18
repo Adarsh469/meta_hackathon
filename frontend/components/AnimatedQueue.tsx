@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { PatientSummary } from "@/lib/types";
 import { getPatientName } from "@/lib/names";
 
@@ -10,10 +11,6 @@ interface Props {
     isAnimating: boolean;
     disabled?: boolean;
 }
-
-const ESI_COLORS: Record<number, string> = {
-    1: "#ff2d55", 2: "#ff6b00", 3: "#ffd60a", 4: "#30d158", 5: "#636366",
-};
 
 export function AnimatedQueue({ patients, finalOrder, isAnimating }: Props) {
     // displayOrder is the single source of truth for what's shown
@@ -92,45 +89,47 @@ export function AnimatedQueue({ patients, finalOrder, isAnimating }: Props) {
     return (
         <div className="space-y-2">
             {displayOrder.map((p, idx) => (
-                <div
-                    key={`${p.case_id}-${idx}`}
-                    className={`flex items-center gap-3 rounded-xl p-3 border transition-all duration-400
+                <motion.div
+                    key={p.case_id}
+                    layout
+                    transition={{ type: "spring", stiffness: 420, damping: 34, mass: 0.9 }}
+                    className={`flex items-center gap-3 rounded-xl p-3 border
                         ${activeIdx === idx
-                            ? "scale-[1.02] border-[#0a84ff]/60 bg-[#0a84ff]/10 shadow-[0_0_16px_#0a84ff22]"
-                            : "border-white/8 bg-white/2"
+                            ? "border-[#0369a1]/50 bg-[#0369a1]/8 shadow-[0_0_16px_#0369a11a]"
+                            : "border-slate-900/8 bg-slate-900/[0.015]"
                         }`}
                 >
                     {/* rank badge */}
-                    <div className="w-6 h-6 rounded-lg bg-white/6 flex items-center justify-center text-xs font-bold text-white/40 flex-shrink-0">
+                    <div className="w-6 h-6 rounded-lg bg-slate-900/6 flex items-center justify-center text-xs font-bold text-slate-400 flex-shrink-0">
                         {idx + 1}
                     </div>
 
                     {/* status dot */}
                     {activeIdx === idx && isRunningRef.current ? (
-                        <span className="w-2 h-2 rounded-full bg-[#0a84ff] animate-pulse flex-shrink-0" />
+                        <span className="w-2 h-2 rounded-full bg-[#0369a1] animate-pulse flex-shrink-0" />
                     ) : (
-                        <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: "#ffd60a" }} />
+                        <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: "#b45309" }} />
                     )}
 
                     {/* patient info */}
                     <div className="flex-1 min-w-0">
-                        <div className="text-sm font-semibold text-white truncate">
+                        <div className="text-sm font-semibold text-slate-900 truncate">
                             {getPatientName(p.case_id, p.gender)}
                         </div>
                         <div className="flex items-center gap-2 mt-0.5">
-                            <span className="text-xs text-white/50">{p.age}y · {p.gender}</span>
-                            <span className="text-[10px] font-mono text-white/20">{p.case_id}</span>
+                            <span className="text-xs text-slate-500">{p.age}y · {p.gender}</span>
+                            <span className="text-[10px] font-mono text-slate-300">{p.case_id}</span>
                         </div>
-                        <div className="text-xs text-white/40 truncate mt-0.5">
+                        <div className="text-xs text-slate-400 truncate mt-0.5">
                             {p.symptoms.slice(0, 2).join(", ")}{p.symptoms.length > 2 ? "…" : ""}
                         </div>
                     </div>
 
                     {/* moving indicator */}
                     {activeIdx === idx && isRunningRef.current && (
-                        <span className="text-xs text-[#0a84ff] font-medium animate-pulse flex-shrink-0">↕ moving</span>
+                        <span className="text-xs text-[#0369a1] font-medium animate-pulse flex-shrink-0">↕ moving</span>
                     )}
-                </div>
+                </motion.div>
             ))}
         </div>
     );
