@@ -237,7 +237,10 @@ export default function DashboardPage() {
         try {
             const res = await triageApi.reset(taskId, SESSION);
             setObs(res.observation);
-            if (res.observation.queue) setOrderedQueue(res.observation.queue);
+            if (res.observation.queue){
+                 setOrderedQueue(res.observation.queue);
+                 setInitialQueueForAnim(res.observation.queue);
+                }
         } catch (e: unknown) { setError(String(e)); }
         finally { setLoading(false); }
     };
@@ -312,11 +315,14 @@ export default function DashboardPage() {
                 },
                 addChatMsg,
                 async (finalScore, finalObs) => {
-                    setScore(finalScore);
-                    setEpisodeDone(true);
-                    setObs(finalObs);
-                    await fetchExplanation(SESSION + "-ai", finalScore);
-                },
+    setObs(finalObs);
+    const delay = taskId === "task2_queue_priority" ? 4200 : 0;
+    setTimeout(async () => {
+        setScore(finalScore);
+        setEpisodeDone(true);
+        await fetchExplanation(SESSION + "-ai", finalScore);
+    }, delay);
+},
             );
         } catch (e: unknown) { setError(String(e)); }
         finally { setAgentRunning(false); }
@@ -476,7 +482,7 @@ export default function DashboardPage() {
                                         />
                                     ) : (
                                         <QueueReorder
-                                            patients={orderedQueue.length ? orderedQueue : (obs?.queue ?? [])}
+                                            patients={initialQueueForAnim.length ? initialQueueForAnim : (obs?.queue ?? [])}
                                             onChange={setOrderedQueue}
                                             disabled={episodeDone}
                                         />
